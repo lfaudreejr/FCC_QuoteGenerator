@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Random Quote Generator</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
@@ -13,23 +14,25 @@
     <!--    HEADER    -->
 
     <header class="head container-fluid">
-        <h1>Random Quote Generator</h1>
-        <p>Get a random quote by clicking the Generate Button</p>
+        <h1 class="h2">Random Quote Generator</h1>
+        <p class="lead">Random Chuck Norris quotes below!</p>
     </header>
 
     <!--    MAIN    -->
     <section class="hero container-fluid">
-        <button class="btn btn-default" type="button" id="button">Generate</button>
-        <blockquote>
-            <p id="quote">Your random quote will generate here!</p>
+        <button class="btn btn-secondary btn-lg" type="button" id="button">Generate</button>
+        <blockquote class="blockquote">
+            <p class="mb-0" id="quote">Your random quote will generate here!</p>
+            <footer class="blockqoute-footer"><cite title="Source Title">-Quotes by ChuckNorris.io</cite></footer>
         </blockquote>
+        <div id="share"></div>
     </section>
 
     <!--    FOOTER    -->
-    <footer>
-        <h2>By Larry Faudree</h2>
+    <footer class="container-fluid">
+        <h4>By Larry Faudree</h4>
     </footer>
-
+    <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
     <script src="js/main.js"></script>
 
 </body>

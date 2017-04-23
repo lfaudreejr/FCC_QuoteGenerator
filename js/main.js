@@ -21,11 +21,29 @@ window.onload = (function(){
   }
 
 
-  btn.onclick = function(){
-    var quote = document.getElementById("quote");
-    var promise = get("https://random-quote-generator.herokuapp.com/api/quotes/random").then(function(quotes){
-      quote.innerText = quotes.quote + " - " + quotes.author;
-    })
-  };
+  //btn.onclick = function(){
+  //  var quote = document.getElementById("quote");
+  //  var promise = get("https://random-quote-generator.herokuapp.com/api/quotes/random").then(function(quotes){
+  //    quote.innerText = quotes.quote + " - " + quotes.author;
+  //  })
+  //};
 
-})
+  btn.onclick = function()
+  {
+    var quote = document.getElementById("quote");
+    var promise = get("https://api.chucknorris.io/jokes/random")
+    .then(function(promise) {
+      console.log(promise);
+      quote.innerText = "'" + promise.value + "'";
+    })
+    .then(function(promise){
+        twttr.widgets.createShareButton(
+          '/',
+          document.getElementById('share'),
+          {
+            text: document.getElementById('quote').innerText
+          }
+        );
+      });
+    }
+});
