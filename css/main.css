@@ -29,8 +29,9 @@ h1 {
     text-align: center;
 }
 
-.hero {
+#hero {
     background-color: #098787;
+    transition: background-color 1s;
 }
 
 .hero #quote {
