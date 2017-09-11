@@ -1,7 +1,7 @@
 window.onload = function() {
   (function loaded() {
-    var btn = document.getElementById("button");
-    var quote = document.getElementById("quote");
+    const BTN = document.getElementById("button");
+    const QUOTE = document.getElementById("quote");
 
     function get(url) {
       return new Promise(function(resolve, reject) {
@@ -21,7 +21,7 @@ window.onload = function() {
       });
     }
 
-    var colors = [
+    const COLORS = [
       "#6b8e23",
       "#318fbd",
       "#4b31bd",
@@ -37,39 +37,38 @@ window.onload = function() {
       "#da6aee"
     ];
 
-    function remove(frame) {
-      frame.parentNode.removeChild(frame);
+
+    class Twidget {
+      constructor(frame, quote, tweet) {
+        this.frame = frame
+        this.quote = quote
+        this.tweet = tweet
+      }
+      makeTwidget() {
+        return twttr.widgets.createShareButton('/', this.frame, {
+          count: 'one',
+          text: this.quote,
+          size: 'large'
+        })
+      }
+      removeTwidget() {
+        this.frame.removeChild(this.tweet)
+      }
     }
 
-    function setTweet(value) {
-      twttr.widgets
-        .createShareButton("/", document.getElementById("tweet-container"), {
-          count: "one",
-          text: value,
-          size: "large"
-        })
-        .then(function(el) {
-          console.log("Button created.");
-        });
+    BTN.onclick = function () {
+      let getRandomQuote = get('https://api.chucknorris.io/jokes/random').then((data) => {
+        const frame = document.getElementById('tweet-container')
+        const tweet = document.getElementById('tweet-container').firstChild
+        const hero = document.getElementById('hero')
+        const TWIDGER = new Twidget(frame, data.value, tweet)
+        quote.innerText = `'${data.value}'`
+        hero.style.background = COLORS[Math.floor(Math.random() * COLORS.length)]
+        if (tweet) {
+          TWIDGER.removeTwidget()
+        }
+        TWIDGER.makeTwidget()
+      })
     }
-
-    btn.onclick = function() {
-      var promise = get("https://api.chucknorris.io/jokes/random")
-        .then(function(promise) {
-          quote.innerText = "'" + promise.value + "'";
-          var frame = document.getElementById("tweet-container").firstChild;
-          if (frame) {
-            remove(frame);
-          }
-          setTweet(promise.value);
-
-          return promise.value;
-        })
-        .then(function() {
-          var hero = document.getElementById("hero");
-          hero.style.background =
-            colors[Math.floor(Math.random() * colors.length)];
-        });
-    };
   })();
 };

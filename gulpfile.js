@@ -56,7 +56,9 @@ function styles() {
 function scripts() {
   return gulp
     .src(paths.scripts.src, { sourcemaps: true })
-    .pipe(babel())
+    .pipe(babel({
+      presets: ['env']
+    }))
     .pipe(uglify())
     .pipe(concat("main.min.js"))
     .pipe(gulp.dest(paths.scripts.dest));
