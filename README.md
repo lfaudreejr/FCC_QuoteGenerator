@@ -4,8 +4,7 @@ Generates Quotes from Chuck Norris!
 
 ---
 
-![RSVP Homepage Preview](https://github.com/lfaudreejr/raw/master/images/generator.png)
-
+![RSVP Homepage Preview](https://github.com/lfaudreejr/FCC_QuoteGenerator/raw/master/images/generator.png)
 ---
 
 ##### Installation:
